@@ -254,6 +254,9 @@ def main():
                 "eye_in_hand_depth", data=np.stack(eye_in_hand_depths, axis=0)
             )
 
+        action_low, action_high = np.min(actions), np.max(actions)
+        actions = 2.0 * ((actions - action_low) / (action_high - action_low)) - 1.0
+
         ep_data_grp.create_dataset("actions", data=actions)
         ep_data_grp.create_dataset("states", data=states)
         ep_data_grp.create_dataset("robot_states", data=np.stack(robot_states, axis=0))
