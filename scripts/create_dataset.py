@@ -63,12 +63,9 @@ def main():
     demos = list(f["data"].keys())
 
     bddl_file_name = f["data"].attrs["bddl_file_name"]
-
-    bddl_file_dir = os.path.dirname(bddl_file_name)
-    replace_bddl_prefix = "/".join(bddl_file_dir.split("bddl_files/")[:-1] + "bddl_files")
-
-    hdf5_path = os.path.join(get_libero_path("datasets"), bddl_file_dir.split("bddl_files/")[-1].replace(".bddl", "_demo.hdf5"))
-
+    
+    hdf5_path = os.path.join(args.dataset_path, bddl_file_name.split("bddl_files/")[-1].replace(".bddl", ""), args.dataset_name + ".hdf5")
+    
     output_parent_dir = Path(hdf5_path).parent
     output_parent_dir.mkdir(parents=True, exist_ok=True)
 

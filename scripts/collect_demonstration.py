@@ -267,6 +267,7 @@ if __name__ == "__main__":
         "controller_configs": controller_config,
     }
 
+    print(args.bddl_file)
     assert os.path.exists(args.bddl_file)
     problem_info = BDDLUtils.get_problem_info(args.bddl_file)
     # Check if we're using a multi-armed environment and use env_configuration argument if so
@@ -312,9 +313,9 @@ if __name__ == "__main__":
         device = Keyboard(
             pos_sensitivity=args.pos_sensitivity, rot_sensitivity=args.rot_sensitivity
         )
-        env.viewer.add_keypress_callback("any", device.on_press)
-        env.viewer.add_keyup_callback("any", device.on_release)
-        env.viewer.add_keyrepeat_callback("any", device.on_press)
+        env.viewer.add_keypress_callback(device.on_press)
+        # env.viewer.add_keyup_callback("any", device.on_release)
+        # env.viewer.add_keyrepeat_callback("any", device.on_press)
     elif args.device == "spacemouse":
         from robosuite.devices import SpaceMouse
 
