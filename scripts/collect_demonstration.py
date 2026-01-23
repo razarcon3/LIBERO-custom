@@ -165,8 +165,8 @@ def gather_demonstrations_as_hdf5(
         del states[-1]
         assert len(states) == len(actions)
 
-        num_eps += 1
         ep_data_grp = grp.create_group("demo_{}".format(num_eps))
+        num_eps += 1
 
         # store model xml as an attribute
         xml_path = os.path.join(directory, ep_directory, "model.xml")
