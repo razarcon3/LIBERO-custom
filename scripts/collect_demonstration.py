@@ -345,7 +345,7 @@ if __name__ == "__main__":
     remove_directory = []
     i = 0
     while i < args.num_demonstration:
-        print(i)
+        print(f"Collecting Demonstration Number {i}")
         saving = collect_human_trajectory(
             env, device, args.arm, args.config, problem_info, remove_directory
         )
